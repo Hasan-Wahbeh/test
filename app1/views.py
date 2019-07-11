@@ -13,6 +13,11 @@ def Home(request):
         print('%' * 50)
     return render(request, 'temp1.html')
 
+def showView(request):
+    print('all user IDs are :')
+    print(post.objects.values_list('userId', flat=True))
+    return render(request, 'temp1.html')
+
 
 def postView(request):
     if request.method == 'POST':
