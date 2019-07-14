@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app1.views import Home, postView, showView
+from app1.views import Home, postView, showView  ,showBranch1
 
 urlpatterns = [
 
     path('', Home),
     path('addBlogs/', postView),
     path('showBlogs/', showView ),
+    path('showBranch1/', showBranch1),
+
     path('admin/', admin.site.urls),
 
 

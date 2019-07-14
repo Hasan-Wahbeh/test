@@ -18,6 +18,9 @@ def showView(request):
     print(post.objects.values_list('userId', flat=True))
     return render(request, 'temp1.html')
 
+def showBranch1(request):
+    return render(request, 'branch1.html')
+
 
 def postView(request):
     if request.method == 'POST':
