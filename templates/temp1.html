@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Hasan Wahbeh </title>>
+    <title> Hasan Wahbeh </title>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 </head>
 <style>
 
@@ -19,6 +23,24 @@ header {
 <body>
 
 <header>
+
+    {% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}! <br>
+    you are logged in
+
+    <hr>
+
+{% else %}
+  <p>You are not logged in</p>    <hr>
+
+
+{% endif %}
+{% endblock %}
+
+    <h2 id="2"></h2>
+<hr>
+
 <form  action="/addBlogs/" method="post" >        <!--  action="" -->
     {% csrf_token %}
 
@@ -33,13 +55,40 @@ The Body :
 
 </form>
 
-    
+    show Branch1
     <form  action="/showBranch1/" method="get" >
 <input type="submit" name = "submit2" > <hr>
-</form>
+    </form>
+
+
+    Login
+    <form  action="/accounts/login/" method="POST">
+        {% csrf_token %}
+  {{ form.as_p }}
+        <input type="submit" /> <hr>
+    </form>
+
+    Logout
+    <form  action="/accounts/logout/" method="POST">
+        {% csrf_token %}
+        <input type="submit" /> <hr>
+    </form>
+
+     Register
+     <form  action="/accounts/register/" method="POST">
+        {% csrf_token %}
+  {{ form.as_p }}
+        <input type="submit" /> <hr>
+    </form>
+
 
 </header>
 
+<script>
+
+document.getElementById("2").innerHTML = post.objects.values_list('userId', flat=True) ;
+
+</script>
 
 </body>
 </html>
