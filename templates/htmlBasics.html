@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.cities{
+  background-color: #600;
+color : white ;
+padding : 20px ;
+}
+</style>
+</head>
+
+<body>
+<button onclick="func1('Hasan Wahbeh',22)">Personal Information</button>
+
+<h1 id = "1"></h1>
+<hr>
+
+<h2 id="2"></h2>
+<hr>
+
+<h3 id="3"></h3>
+<h3 id="4"></h3>
+
+<button onclick="document.getElementById('4').innerHTML = Date()"> The Date </button> <hr>
+
+<form action ="">
+<select name="labtops">
+    <option value="hp">HP</option>
+    <option value="dell">DELL</option>
+    <option value="apple" selected>Apple</option>
+</select>
+</form> <hr>
+
+<form>
+Your Name :
+<input type = "text" name = "name"> <br>
+Your Age :
+<input type = "text" name = "age"> <br>
+</form> <hr>
+
+<div class="cities">
+<p> <i>This is to test the class </i> </p>
+</div>
+
+<script>
+var m1 = "Second Day at ASAL ";
+var m2 = "I Feel like at My HOME";
+document.getElementById("2").innerHTML = m1+ "and "+m2 ;
+
+</script>
+
+<script>
+function func1(name,age){
+  document.getElementById("1").innerHTML ="The Name is : "+ name +"<br>" +"The Age is : "+ age  ;
+}
+</script> <hr>
+
+
+
+<script>
+var person = {
+name : "Mohammad" ,
+age : 23 ,
+job : "Dentist "
+};
+
+document.getElementById("3").innerHTML = "Name is : " + person.name +"<br>"+ "Age is : " + person.age + "<hr>" ;
+
+</script>
+
+
+</body>
+</html>
