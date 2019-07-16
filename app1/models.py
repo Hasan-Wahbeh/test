@@ -10,5 +10,3 @@ class post(models.Model):
     title=models.CharField(max_length=100)
     body=models.TextField()
 
-    # date_posted=models.DateTimeField(default=timezone.now)
-    # auth = models.ForeignKey(User,on_delete=models.CASCADE)

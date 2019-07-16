@@ -21,10 +21,11 @@ from app1.views import Home, postView, showView  ,showBranch1,login_view ,regist
 urlpatterns = [
 
 
-    #path('', Start),
 
     path('', Home),
     path('addBlogs/', postView),
+
+
     path('showBlogs/', showView ),
     path('showBranch1/', showBranch1),
     path('accounts/login/', login_view),
