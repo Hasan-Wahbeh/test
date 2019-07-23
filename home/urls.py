@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app1.views import Home, postView, showView  ,login_view ,register_view ,Start,logout_view,htmlBasics
+from app1.views import Home, postView, showView  ,login_view ,register_view ,Start,logout_view,GoTocommentView,CommentView
 
 urlpatterns = [
 
@@ -24,10 +24,12 @@ urlpatterns = [
 
     path('', Home),
     path('addBlogs/', postView),
+    path('addComments/', GoTocommentView),
+    path('showComment/', CommentView),
 
 
     path('showBlogs/', showView ),
-    path('showHtmlBasics/', htmlBasics),
+    # path('showHtmlBasics/', htmlBasics),
     path('accounts/login/', login_view),
     path('accounts/logout/', logout_view),
     path('accounts/register/', register_view),

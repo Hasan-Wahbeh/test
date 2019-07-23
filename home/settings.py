@@ -77,16 +77,13 @@ WSGI_APPLICATION = 'home.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-
-                           # host='localhost',
-                           # user='root',
-                           # password='hasan1152064',
-                           # db='new_schema',
-                           # charset='utf8mb4',
-                           # cursorclass=pymysql.cursors.DictCursor)
-
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'app1db',
+        'HOST':'localhost',
+        'USER':'root',
+        'PASSWORD': 'hasan1152064' ,
+        'PORT' : '3306',
+#        'charset':'utf8mb4',
 
 
     }

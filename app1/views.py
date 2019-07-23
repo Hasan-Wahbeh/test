@@ -3,7 +3,7 @@ import pymysql
 
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from .models import post
+from .models import post,Comment
 from django.contrib.auth.models import User
 
 from django.contrib.auth import (
@@ -13,7 +13,7 @@ from django.contrib.auth import (
 
 )
 
-from .forms import UserLoginForm ,UserRegisterForm
+from .forms import UserLoginForm ,UserRegisterForm,CommentForm
 
 def logout_view(request):
     logout(request)
@@ -76,8 +76,8 @@ def showView(request):
     print(post.objects.values_list('userId', flat=True))
     return render(request, 'home.html')
 
-def htmlBasics(request):
-    return render(request, 'htmlBasics.html')
+# def htmlBasics(request):
+#     return render(request, 'htmlBasics.html')
 
 def postView(request):
     if request.method == 'POST':
@@ -98,9 +98,28 @@ def postView(request):
             print( 'the user ID is :'+ Post.userId)
             print('the title is :'+Post.title)
             print('the body is :'+Post.body)
-            print('*'*70)
+            print('*'*65)
 
             return render(request,'home.html')
     else:
         print('%'*50)
         return render(request,'home.html')
+
+def CommentView(request):
+
+    if request.method == 'POST':
+        if request.POST.get('user') and request.POST.get('email') and request.POST.get('body'):
+            comment1 = Comment()
+            comment1.user = request.POST.get('user')
+            comment1.email = request.POST.get('email')
+            comment1.body = request.POST.get('body')
+            comment1.save()
+
+
+            return render(request,'home.html')
+    else:
+        print('%'*50)
+        return render(request,'home.html')
+
+def GoTocommentView(request):
+    return render(request, 'Comment.html')

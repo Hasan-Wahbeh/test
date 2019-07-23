@@ -26,38 +26,41 @@ header {
 
     {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}! <br>
+  Hi  :-) {{ user.username }}! <br>
     you are logged in
-<form  action="/addBlogs/" method="post" >        <!--  action="" -->
+   <hr>
+
+
+
+
+    <form  action="/addBlogs/" method="post" id="postForm" >        <!--  action="" -->
         {% csrf_token %}
 
         Your ID :
         <input type = "number" name = "userId"> <br>
         The Title :
-<input type = "text" name = "title"> <br>
+<input type="text" name = "title"> <br>
 The Body :
-<input type= "textarea" name = "body"> <br><hr>
+    <textarea name="body" > </textarea>
 
 <input type="submit" name = "submit" > <hr>
 
 </form>
 
-    show Branch1
-    <form  action="/showHtmlBasics/" method="get" >
-<input type="submit" name = "submit2" > <hr>
-    </form>
-    <hr>
+        <form  action="/addComments/" method="post"  >
+        {% csrf_token %}
+            Leave a comment<!--  action="" -->
+            <input type="submit" name = "submit" > <hr>
+</form>
+<hr>
+
+
+
+
 
     Logout
     <form  action="/accounts/logout/" method="POST">
         {% csrf_token %}
-        <input type="submit" /> <hr>
-    </form>
-
-     Register
-     <form  action="/accounts/register/" method="POST">
-        {% csrf_token %}
-  {{ form.as_p }}
         <input type="submit" /> <hr>
     </form>
 
