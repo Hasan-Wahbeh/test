@@ -10,8 +10,6 @@ class post(models.Model):
     title=models.CharField(max_length=100)
     body=models.TextField()
 
-    def __str__(self):
-        return self.name
 
 
 
@@ -23,5 +21,3 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
     post=models.ForeignKey(post,on_delete=models.CASCADE,default=None)
 
-    def __str__(self):
-        return self.name

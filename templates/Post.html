@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Hasan Wahbeh </title>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
+<style>
+
+header {
+  background-color: #656;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  text-align: center;
+
+}
+
+</style>
+<body>
+
+<header>
+<form  action="/showPost/" method="post"  >        <!--  action="" -->
+        {% csrf_token %}
+
+        Your Id :
+        <input type = "text" name ="userId"> <br>
+        Tour Email :
+<input type="text" name ="title"> <br>
+The Comment :
+    <textarea name="body" > </textarea>
+<br>
+
+<input type="submit" name = "submit" > <hr>
+
+</form>
+
+</header>
+
+
+</body>
+</html>

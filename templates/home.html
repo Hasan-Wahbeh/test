@@ -87,6 +87,12 @@ show all Posts
         <input type="submit" /> <hr>
     </form>
 
+    show all Posts with comments
+    <form  action="/showPostsNotLogin/" method="POST">
+        {% csrf_token %}
+        <input type="submit" /> <hr>
+    </form>
+
 {% endif %}
 {% endblock %}
 

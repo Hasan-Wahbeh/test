@@ -80,14 +80,28 @@ def showView(request):
     print(post.objects.values_list('userId', flat=True))
     return render(request, 'home.html')
 
+def showPostsNotLogin(request):
+    posts = post.objects.all()
+    comments = Comment.objects.all()
+    args = {'posts': posts, 'comments': comments}
+
+    return render(request, 'allPostsNotLogin.html', args)
+
+
 def showPosts(request):
     posts = post.objects.all()
-    args = {'posts': posts}
+    comments = Comment.objects.all()
+    Users = User.objects.all()
+    args = {'posts': posts , 'comments' : comments , 'Users' : Users}
 
     return render(request, 'allPosts.html',args)
 
 # def htmlBasics(request):
 #     return render(request, 'htmlBasics.html')
+def editPost(request,pk):
+    if request.method == 'POST':
+        Post = post()
+
 
 def postView(request):
     if request.method == 'POST':
@@ -124,6 +138,7 @@ def CommentView(request):
             comment1.email = request.POST.get('email')
             comment1.body = request.POST.get('body')
             comment1.post_id= request.POST.get('post')
+
             comment1.save()
 
 
@@ -133,4 +148,7 @@ def CommentView(request):
         return render(request,'home.html')
 
 def GoTocommentView(request):
-    return render(request, 'Comment.html')
+    return render(request, 'comment.html')
+
+def GoToPostView(request):
+    return render(request, 'Post.html')
