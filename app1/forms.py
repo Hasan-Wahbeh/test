@@ -51,7 +51,8 @@ class CommentForm(forms.ModelForm):
         fields = [
             'user',
             'email',
-            'body'
+            'body',
+            'post'
         ]
     def clean(self, *args, **kwargs):
         return super(CommentForm, self).clean(*args, **kwargs)

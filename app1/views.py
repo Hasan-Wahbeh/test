@@ -65,16 +65,26 @@ def Start(request):
     return render(request, 'start.html')
 
 def Home(request):
+
+    posts=post.objects.all()
+    args ={'posts':posts}
     if request.method == 'POST':
         print('&^' * 50)
     else:
         print('%' * 50)
-    return render(request, 'home.html')
+    return render(request, 'home.html',args)
 
 def showView(request):
+
     print('all user IDs are :')
     print(post.objects.values_list('userId', flat=True))
     return render(request, 'home.html')
+
+def showPosts(request):
+    posts = post.objects.all()
+    args = {'posts': posts}
+
+    return render(request, 'allPosts.html',args)
 
 # def htmlBasics(request):
 #     return render(request, 'htmlBasics.html')
@@ -113,6 +123,7 @@ def CommentView(request):
             comment1.user = request.POST.get('user')
             comment1.email = request.POST.get('email')
             comment1.body = request.POST.get('body')
+            comment1.post_id= request.POST.get('post')
             comment1.save()
 
 

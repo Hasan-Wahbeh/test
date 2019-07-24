@@ -31,8 +31,6 @@ header {
    <hr>
 
 
-
-
     <form  action="/addBlogs/" method="post" id="postForm" >        <!--  action="" -->
         {% csrf_token %}
 
@@ -43,18 +41,26 @@ header {
 The Body :
     <textarea name="body" > </textarea>
 
-<input type="submit" name = "submit" > <hr>
+<input type="submit" name = "submit" >
 
 </form>
 
+
+<hr>
         <form  action="/addComments/" method="post"  >
         {% csrf_token %}
             Leave a comment<!--  action="" -->
+
             <input type="submit" name = "submit" > <hr>
 </form>
 <hr>
 
 
+show all Posts
+    <form  action="/showPosts/" method="POST">
+        {% csrf_token %}
+        <input type="submit" /> <hr>
+    </form>
 
 
 
