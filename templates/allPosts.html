@@ -7,27 +7,28 @@
 <body>
 
   {% for post in posts  %}
+
   Post ID = {{ post.id }} <br>
-  Post Body is : {{ post.body }} <br>
-  <br>
+  Post Body is : <h2> {{ post.body }} </h2>>
+
+
   {% for comment in comments  %}
   {% if comment.post_id == post.id  %}
 
-  comment Body is = {{ comment.body }} <br>
-  comment for post number : : {{ comment.post_id }} <br><hr>
+  comment Body is = <h3>{{ comment.body }} </h3>
+  comment for post number : : {{ comment.post_id }} <hr>
 {% endif %}
 
 
     {% endfor %}
 
-  <form  action="/addComments/" method="post"  >
+  <form  action="/addComments/" method="post" id="commentForm" >
         {% csrf_token %}
             Leave a comment<!--  action="" -->
 
-            <input type="submit" name = "submit" >
-</form>
+            <input type="submit"  name="system" value={{post.id}} form="commentForm">
+</form> <hr>
 
-     <hr>
     {% endfor %}
 
 </body>

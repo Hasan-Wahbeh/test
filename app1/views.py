@@ -98,9 +98,9 @@ def showPosts(request):
 
 # def htmlBasics(request):
 #     return render(request, 'htmlBasics.html')
-def editPost(request,pk):
-    if request.method == 'POST':
-        Post = post()
+# def editPost(request,pk):
+#     if request.method == 'POST':
+#         Post = post()
 
 
 def postView(request):
@@ -134,21 +134,39 @@ def CommentView(request):
     if request.method == 'POST':
         if request.POST.get('user') and request.POST.get('email') and request.POST.get('body'):
             comment1 = Comment()
-            comment1.user = request.POST.get('user')
-            comment1.email = request.POST.get('email')
-            comment1.body = request.POST.get('body')
-            comment1.post_id= request.POST.get('post')
-
+            commUser=request.POST.get('user')
+            commEmail=request.POST.get('email')
+            commBody=request.POST.get('body')
+            commPost=request.POST.get('post')
+            comment1.user = commUser
+            comment1.email = commEmail
+            comment1.body = commBody
+            comment1.post_id=commPost
+            # p1=post(commUser,commEmail,commBody)
+            # p1.save()
+            # comment1.save()
+            # comment1.post_id.add(p1)
+            # comment1.postrelation.many_to_many(p1)
+            # comment1.post_id= post.objects.exists()
+            # print(request.POST.get('system', None))
+            # comment1.post_id = 1
             comment1.save()
 
+            posts = post.objects.all()
+            comments = Comment.objects.all()
+            Users = User.objects.all()
+            args = {'posts': posts, 'comments': comments, 'Users': Users}
 
-            return render(request,'home.html')
+            return render(request,'home.html',args)
     else:
         print('%'*50)
         return render(request,'home.html')
 
 def GoTocommentView(request):
-    return render(request, 'comment.html')
+    context = {}
+    system = request.POST.get('system', None)
+    context['system'] = system
+    return render(request, 'comment.html',context)
 
 def GoToPostView(request):
-    return render(request, 'Post.html')
+     return render(request, 'Post.html')

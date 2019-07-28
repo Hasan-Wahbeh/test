@@ -20,4 +20,6 @@ class Comment(models.Model):
     # created = models.TimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     post=models.ForeignKey(post,on_delete=models.CASCADE,default=None)
+    postrelation=models.ManyToOneRel(post,on_delete=models.CASCADE,to=post,field_name="post")
+
 
