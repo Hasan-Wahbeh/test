@@ -4,20 +4,45 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+
+header {
+  background-color: #356;
+  padding: 30px;
+  text-align: left;
+  font-size: 22px;
+  color: white;
+  text-align: left;
+
+}
+
+</style>
 <body>
-
+<header>
   {% for post in posts  %}
-
-  Post ID = {{ post.id }} <br>
-  Post Body is : <h2> {{ post.body }} </h2>>
+ <hr> <hr><hr>
+  <h1>  Post ID = {{ post.id }}</h1> <br>
+  Post Body is : <h2> {{ post.body }} </h2>> <hr> <hr><hr>
 
 
   {% for comment in comments  %}
   {% if comment.post_id == post.id  %}
 
   comment Body is = <h3>{{ comment.body }} </h3>
-  comment for post number : : {{ comment.post_id }} <hr>
-{% endif %}
+  comment for post number : : {{ comment.post_id }} <hr><hr>
+
+  <form  action="/deleteComments/" method="POST" id="deleteComment" >
+        {% csrf_token %}
+            delete this comment <!--  action="" -->
+
+            <input type="submit"  name="commentId" value={{comment.id}} form="deleteComment">
+            <!--<input type="text"  name="postId" value={{post.id}} form="deleteComment">-->
+
+  </form> <hr>
+
+  {% endif %}
+
 
 
     {% endfor %}
@@ -27,9 +52,11 @@
             Leave a comment<!--  action="" -->
 
             <input type="submit"  name="system" value={{post.id}} form="commentForm">
-</form> <hr>
+  </form> <hr>
 
     {% endfor %}
+
+</header>
 
 </body>
 </html>

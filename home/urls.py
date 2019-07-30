@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app1.views import Home, postView, showView  ,login_view ,register_view ,Start,logout_view,GoTocommentView,CommentView,showPosts,showPostsNotLogin
+from app1.views import Home, postView, showView  ,login_view ,register_view ,Start,logout_view,GoTocommentView,CommentView,showPosts,showPostsNotLogin,GoTodeleteComment,deleteView
 
 
 
@@ -27,8 +27,12 @@ urlpatterns = [
     path('', Home),
     path('addBlogs/', postView),
     path('addComments/', GoTocommentView),
+    # path('ConfirmDelete/', deleteComment),
+
+    path('deleteComments/', GoTodeleteComment),
 
     path('showComment/', CommentView),
+    path('deleteView/', deleteView),
 
     path('showPosts/', showPosts),
     path('showPostsNotLogin/', showPostsNotLogin),

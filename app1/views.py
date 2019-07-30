@@ -1,5 +1,6 @@
 from unittest import loader
 import pymysql
+from django.shortcuts import get_list_or_404, get_object_or_404
 
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
@@ -170,3 +171,30 @@ def GoTocommentView(request):
 
 def GoToPostView(request):
      return render(request, 'Post.html')
+
+def GoTodeleteComment(request):
+    context = {}
+    commentId = request.POST.get('commentId', None)
+    context['commentId'] = commentId
+    # postId = request.POST.get('postId', None)
+    # context['postId'] = postId
+
+    return render(request, 'deletecomment.html', context)
+
+
+def deleteView(request):
+    id = request.POST.get('commentId')
+    # pk = request.POST.get('PostId')
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, id=id,pk=id)
+        comment.delete()
+        print(comment.body)
+        print( 'You have successfully deleted the comment')
+
+
+    posts = post.objects.all()
+    comments = Comment.objects.all()
+    Users = User.objects.all()
+    args = {'posts': posts, 'comments': comments, 'Users': Users}
+
+    return render(request, 'allPosts.html', args)

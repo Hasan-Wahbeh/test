@@ -23,19 +23,13 @@ header {
 <body>
 
 <header>
-<form  action="/showComment/" method="post"  >        <!--  action="" -->
+<form  action="/deleteView/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
-        Your name :
-        <input type = "text" name = "user"> <br>
-        Tour Email :
-<input type="email" name = "email"> <br>
-The Comment :
-    <textarea name="body" > </textarea>
-<br>
-        <input type = "hidden" name = "post" value= {{ system }} >
+        <input type = "number" name = "commentId" value= {{ commentId }} >
+        <!--<input type = "hidden" name = "postId" value= {{ postId }} >-->
 
-            <button> ADD Comment </button>>
+            <button> Delete Comment </button>>
 
 </form>
 
