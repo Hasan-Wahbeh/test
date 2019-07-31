@@ -20,32 +20,29 @@ header {
 </style>
 <body>
 <header>
+
+    User is {{ user.username }}
   {% for post in posts  %}
  <hr> <hr><hr>
-  <h1>  Post ID = {{ post.id }}</h1> <br>
-  Post Body is : <h2> {{ post.body }} </h2>> <hr> <hr><hr>
+  <h1>  Post ID => {{ post.id }}</h1>
+  <h1>  Post username => {{ post.userId }}</h1>
+
+  <h2> Post Body is =>  {{ post.body }} </h2> <hr> <hr><hr>
+
+      {% if post.userId == user.username  %}
 
 
-  {% for comment in comments  %}
-  {% if comment.post_id == post.id  %}
-
-  comment Body is = <h3>{{ comment.body }} </h3>
-  comment for post number : : {{ comment.post_id }} <hr><hr>
-
-  <form  action="/deleteComments/" method="POST" id="deleteComment" >
+    <form  action="/deletePost/" method="POST" id="deletePostForm" >
         {% csrf_token %}
-            delete this comment <!--  action="" -->
+            delete this Post <!--  action="" -->
 
-            <input type="submit"  name="commentId" value={{comment.id}} form="deleteComment">
+            <input type="submit"  name="postId" value={{post.id}} form="deletePostForm">
             <!--<input type="text"  name="postId" value={{post.id}} form="deleteComment">-->
 
   </form> <hr>
 
-  {% endif %}
+      {% endif %}
 
-
-
-    {% endfor %}
 
   <form  action="/addComments/" method="post" id="commentForm" >
         {% csrf_token %}

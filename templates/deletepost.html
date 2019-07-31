@@ -23,21 +23,13 @@ header {
 <body>
 
 <header>
-<form  action="/showPost/" method="post"  >        <!--  action="" -->
+<form  action="/deletePostView/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
-        Your Name :
-        <!--<input type = "text" name ="userId"> <br>-->
+        <input type = "number" name = "postId" value= {{ postId }} >
+        <!--<input type = "hidden" name = "postId" value= {{ postId }} >-->
 
-            <input type = "text" name = "userId" value= {{ userId }} >
-
-        Tour Email :
-<input type="text" name ="title"> <br>
-The Comment :
-    <textarea name="body" > </textarea>
-<br>
-
-<input type="submit" name = "submit" > <hr>
+            <button> Delete Post </button>
 
 </form>
 

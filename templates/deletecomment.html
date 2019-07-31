@@ -26,10 +26,10 @@ header {
 <form  action="/deleteView/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
-        <input type = "number" name = "commentId" value= {{ commentId }} >
+        <input type = "hidden" name = "commentId" value= {{ commentId }} >
         <!--<input type = "hidden" name = "postId" value= {{ postId }} >-->
 
-            <button> Delete Comment </button>>
+            <button> Delete Comment </button>
 
 </form>
 

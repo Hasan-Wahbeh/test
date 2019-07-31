@@ -66,9 +66,11 @@ def Start(request):
     return render(request, 'start.html')
 
 def Home(request):
+    posts = post.objects.all()
+    comments = Comment.objects.all()
+    Users = User.objects.all()
+    args = {'posts': posts, 'comments': comments, 'Users': Users}
 
-    posts=post.objects.all()
-    args ={'posts':posts}
     if request.method == 'POST':
         print('&^' * 50)
     else:
@@ -96,12 +98,6 @@ def showPosts(request):
     args = {'posts': posts , 'comments' : comments , 'Users' : Users}
 
     return render(request, 'allPosts.html',args)
-
-# def htmlBasics(request):
-#     return render(request, 'htmlBasics.html')
-# def editPost(request,pk):
-#     if request.method == 'POST':
-#         Post = post()
 
 
 def postView(request):
@@ -164,10 +160,13 @@ def CommentView(request):
         return render(request,'home.html')
 
 def GoTocommentView(request):
-    context = {}
+    posts = post.objects.all()
+    comments = Comment.objects.all()
+    Users = User.objects.all()
     system = request.POST.get('system', None)
-    context['system'] = system
-    return render(request, 'comment.html',context)
+    args = {'system': system,'posts': posts, 'comments': comments, 'Users': Users}
+
+    return render(request, 'comment.html',args)
 
 def GoToPostView(request):
      return render(request, 'Post.html')
@@ -181,6 +180,14 @@ def GoTodeleteComment(request):
 
     return render(request, 'deletecomment.html', context)
 
+def GoTodeletePost(request):
+    context = {}
+    postId = request.POST.get('postId', None)
+    context['postId'] = postId
+    # postId = request.POST.get('postId', None)
+    # context['postId'] = postId
+
+    return render(request, 'deletepost.html', context)
 
 def deleteView(request):
     id = request.POST.get('commentId')
@@ -198,3 +205,22 @@ def deleteView(request):
     args = {'posts': posts, 'comments': comments, 'Users': Users}
 
     return render(request, 'allPosts.html', args)
+
+
+def deletePostView(request):
+    id = request.POST.get('postId')
+    # pk = request.POST.get('PostId')
+    if request.method == 'POST':
+        post1 = get_object_or_404(post, id=id,pk=id)
+        post1.delete()
+        print(post1.body)
+        print( 'You have successfully deleted the Post')
+
+
+    posts = post.objects.all()
+    comments = Comment.objects.all()
+    Users = User.objects.all()
+    args = {'posts': posts, 'comments': comments, 'Users': Users}
+
+    return render(request, 'allPosts.html', args)
+

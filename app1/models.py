@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 
 class post(models.Model):
-    userId=models.IntegerField()
+    userId=models.CharField(max_length=200)
     title=models.CharField(max_length=100)
     body=models.TextField()
 

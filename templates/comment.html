@@ -23,19 +23,44 @@ header {
 <body>
 
 <header>
+    <!--post id= {{ system }} <br>-->
+
+    {% for comment in comments  %}
+    {{ comment.post_id }} == {{ system }}
+
+
+          <!--{% if comment.post_id == 1  %}-->
+
+  <h3> comment Body is = {{ comment.body }} </h3>
+  comment for post number : : {{ comment.post_id }} <hr><hr>
+
+  <form  action="/deleteComments/" method="POST" id="deleteComment" >
+        {% csrf_token %}
+            delete this comment <!--  action="" -->
+
+            <input type="submit"  name="commentId" value={{comment.id}} form="deleteComment">
+            <!--<input type="text"  name="postId" value={{post.id}} form="deleteComment">-->
+
+  </form> <hr>
+      <!--{% endif %}-->
+
+    {% endfor %}
+
 <form  action="/showComment/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
         Your name :
         <input type = "text" name = "user"> <br>
-        Tour Email :
+        Your Email :
 <input type="email" name = "email"> <br>
 The Comment :
     <textarea name="body" > </textarea>
 <br>
         <input type = "hidden" name = "post" value= {{ system }} >
 
-            <button> ADD Comment </button>>
+            <button> ADD Comment </button>
+
+
 
 </form>
 

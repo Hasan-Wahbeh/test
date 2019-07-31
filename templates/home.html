@@ -34,9 +34,10 @@ header {
     <form  action="/addBlogs/" method="post" id="postForm" >        <!--  action="" -->
         {% csrf_token %}
 
-        Your ID :
-        <input type = "number" name = "userId"> <br>
-        The Title :
+
+        <!--Your Name :-->
+            <input type = "hidden" name = "userId" value= {{ user.username }} >
+        The Post Title :
 <input type="text" name = "title"> <br>
 The Body :
     <textarea name="body" > </textarea>
