@@ -48,7 +48,7 @@ header {
         {% csrf_token %}
             Leave a comment<!--  action="" -->
 
-            <input type="submit"  name="system" value={{post.id}} form="commentForm">
+            <input type="submit"  name="post_id" value={{post.id}} form="commentForm">
   </form> <hr>
 
     {% endfor %}

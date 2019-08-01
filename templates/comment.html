@@ -24,15 +24,16 @@ header {
 
 <header>
     <!--post id= {{ system }} <br>-->
-
+<h4> the User is {{ user.username }} </h4>
     {% for comment in comments  %}
-    {{ comment.post_id }} == {{ system }}
+<hr>
+<h3> comment Body is = {{ comment.body }} </h3>
+  comment for post number : : {{ comment.post_id }}
+ <h3> this comment is by {{ comment.user }}</h3>
 
+    {{ comment.post_id }} == {{ post_id }}
+      {% if comment.user == user.username %}
 
-          <!--{% if comment.post_id == 1  %}-->
-
-  <h3> comment Body is = {{ comment.body }} </h3>
-  comment for post number : : {{ comment.post_id }} <hr><hr>
 
   <form  action="/deleteComments/" method="POST" id="deleteComment" >
         {% csrf_token %}
@@ -42,21 +43,22 @@ header {
             <!--<input type="text"  name="postId" value={{post.id}} form="deleteComment">-->
 
   </form> <hr>
-      <!--{% endif %}-->
+
+          {% endif %}
+
 
     {% endfor %}
 
 <form  action="/showComment/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
-        Your name :
-        <input type = "text" name = "user"> <br>
-        Your Email :
-<input type="email" name = "email"> <br>
+        <!--Your name :-->
+    <input type = "hidden" name = "user" value= {{ user.username }} >
+<input type="hidden" name = "email" value= {{ user.email }} >
 The Comment :
     <textarea name="body" > </textarea>
 <br>
-        <input type = "hidden" name = "post" value= {{ system }} >
+        <input type = "hidden" name = "post" value= {{ post_id }} >
 
             <button> ADD Comment </button>
 

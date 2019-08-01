@@ -163,8 +163,8 @@ def GoTocommentView(request):
     posts = post.objects.all()
     comments = Comment.objects.all()
     Users = User.objects.all()
-    system = request.POST.get('system', None)
-    args = {'system': system,'posts': posts, 'comments': comments, 'Users': Users}
+    post_id = request.POST.get('post_id', None)
+    args = {'post_id': post_id,'posts': posts, 'comments': comments, 'Users': Users}
 
     return render(request, 'comment.html',args)
 

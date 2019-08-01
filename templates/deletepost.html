@@ -26,7 +26,7 @@ header {
 <form  action="/deletePostView/" method="post"  >        <!--  action="" -->
         {% csrf_token %}
 
-        <input type = "number" name = "postId" value= {{ postId }} >
+        <input type = "number" name = "postId" value= {{ post_Id }} >
         <!--<input type = "hidden" name = "postId" value= {{ postId }} >-->
 
             <button> Delete Post </button>
